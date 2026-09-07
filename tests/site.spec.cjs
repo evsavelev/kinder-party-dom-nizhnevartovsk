@@ -1,6 +1,6 @@
 const {test,expect}=require('@playwright/test');
 test('Mobile: navigation, meaningful contact links, FAQ and lightbox keyboard',async({page})=>{
- await page.setViewportSize({width:390,height:844});await page.goto('/');
+ await page.setViewportSize({width:390,height:844});await page.goto('./');
  const menu=page.locator('.menu-toggle');await menu.click();await expect(menu).toHaveAttribute('aria-expanded','true');await page.locator('#navigation a[href="#venue"]').click();await expect(menu).toHaveAttribute('aria-expanded','false');await expect(page).toHaveURL(/#venue$/);
  const photo=page.locator('#venue .photo-open').first();await photo.click();const dialog=page.locator('#lightbox');await expect(dialog).toBeVisible();await expect(page.locator('#lightbox-image')).toHaveJSProperty('complete',true);const before=await page.locator('#lightbox-image').getAttribute('src');await page.keyboard.press('ArrowRight');await expect(page.locator('#lightbox-image')).not.toHaveAttribute('src',before);await page.keyboard.press('ArrowLeft');await expect(page.locator('#lightbox-image')).toHaveAttribute('src',before);await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(photo).toBeFocused();
  const faq=page.locator('summary').first();await faq.click();await expect(faq.locator('..')).toHaveAttribute('open','');await faq.click();await expect(faq.locator('..')).not.toHaveAttribute('open','');
@@ -15,5 +15,5 @@ test('Static content works without JavaScript, schema and local assets resolve',
  const body=await p.locator('body').innerText();expect(body).not.toMatch(/Чапаева,? 34|Мира,? 5|Lorem ipsum|undefined|NaN/);await c.close();
 });
 test('Reduced motion and desktop lightbox focus stay usable',async({page})=>{
- await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');expect(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');await page.locator('#gallery .photo-open').first().click();await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('#lightbox').contains(document.activeElement))).toBe(true);await page.getByRole('button',{name:'Закрыть фото'}).click();await expect(page.locator('#lightbox')).not.toBeVisible();
+ await page.emulateMedia({reducedMotion:'reduce'});await page.goto('./');expect(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');await page.locator('#gallery .photo-open').first().click();await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('#lightbox').contains(document.activeElement))).toBe(true);await page.getByRole('button',{name:'Закрыть фото'}).click();await expect(page.locator('#lightbox')).not.toBeVisible();
 });

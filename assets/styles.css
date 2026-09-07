@@ -16,6 +16,7 @@
 .venue-gallery figure:nth-child(n+4){grid-column:auto;grid-row:2}
 .venue-gallery figure:nth-child(n+4) .photo-open{height:170px}
 .venue-gallery figure:nth-child(n+4) img{object-position:50% 35%}
+.venue-gallery figure:nth-child(5) img{object-position:50% 85%}
 .hero-proof{font-size:12px}
 @media(max-width:850px){.venue-gallery figure:nth-child(n+4){grid-row:3}.venue-gallery figure:nth-child(n+4) .photo-open{height:270px}.hero-proof{font-size:10px}}
 @media(max-width:650px){.venue-gallery figure:nth-child(n+4) .photo-open{height:205px}.album figure:nth-child(5){grid-column:auto}.album figure:nth-child(5) .photo-open{height:220px}.album figure:nth-child(5) img{object-position:44% 50%}.program-bottom .text-link{font-size:12px}.meta{font-size:12px}.hero-proof{gap:12px}.split-story>figure>figcaption{margin-bottom:18px}}
