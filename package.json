@@ -1,14 +1,16 @@
 {
   "name": "kinder-party-dom-nizhnevartovsk",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Static commercial demo for Kinder Party Dom, Nizhnevartovsk",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node tools/build.mjs",
+    "test": "playwright test",
+    "qa": "node tools/qa.cjs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "devDependencies": {
     "@playwright/test": "^1.63.0"
   }

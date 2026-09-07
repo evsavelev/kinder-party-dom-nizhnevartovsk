@@ -1,0 +1,2 @@
+const {chromium}=require('@playwright/test');const fs=require('node:fs');
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});const p=await b.newPage({viewport:{width:1440,height:1000}});await p.goto('https://vk.ru/wall-106473815_2201',{waitUntil:'domcontentloaded'});await p.waitForTimeout(3000);console.log(await p.locator('video').evaluateAll(v=>v.map(x=>({src:x.currentSrc,duration:x.duration,width:x.videoWidth,height:x.videoHeight}))));await b.close()})();
